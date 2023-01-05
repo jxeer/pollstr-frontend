@@ -1,0 +1,28 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: cnycn_polls_development
+
+
+test:
+  <<: *default
+  database: cnycn_polls_test
+
+
+production:
+  <<: *default
+  database: cnycn_polls_production
+  username: cnycn_polls
+  password: <%= ENV["CNYCN_POLLS_DATABASE_PASSWORD"] %>
+
+
+  development:
+      <<: *default
+      database: cnycn_polls_development // add this line if it isn't already there
+      username: database_user // add this line
+      password: user_password // add this line
