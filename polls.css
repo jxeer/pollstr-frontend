@@ -48,3 +48,7 @@
   height: 70px;
   text-align: center;
 }
+
+#resultsButton {
+  background-color: darkblue;
+}
