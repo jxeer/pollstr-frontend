@@ -1,4 +1,12 @@
-var buttonOne = document.querySelector('headingTwo');
+// document.querySelector("panel-group").addEventListener("click", function() {
+//     if headerOne (yes)
+//     else (no)
+// }
+//
+
+fetch('localhost:3000')
+.then(response => response.json())
+.then(data => console.log(data));
 
 
 /*
