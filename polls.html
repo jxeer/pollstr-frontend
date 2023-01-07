@@ -89,6 +89,18 @@
       <div class="voteModule">
       <h1>Question</h1>
       <h2> Vote Below </h2>
+
+      <div class="poll">
+			<div>Poll #{poll.id}</div>
+			<div>Topic: "{poll.description}"</div>
+			<div class="answers">
+				{#each [...tallyVotes(poll)] as [answer, count]}
+					<div>{answer}: {count}</div>
+				{/each}
+			</div>
+			<div id="chart-{poll.id}" style="height: 300px;" />
+		</div>
+
         <div id="choices">
           <div class="choice">
             <div class="result">
@@ -172,6 +184,26 @@
     <script src="vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
     <script src="vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
     <script src="vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.js" type="text/javascript"></script>
+        <script src="./vendor/chartkick.js" type="text/javascript"></script>
+
+        <script>
+            const poll_url = "http://localhost:3000/polls/1.json";
+
+            async function getPollData() {
+                const response = await fetch(poll_url);
+                const poll_data = await response.json();
+
+                const results = new Map();
+                for (const vote of poll_data.votes) {
+                    results.set(vote.answer, (results.get(vote.answer) ?? 0) + 1);
+                }
+
+                new Chartkick.PieChart("poll-chart", [...[...results]]);
+            }
+
+            getPollData();
+        </script>
 
     <!-- PAGE LEVEL SCRIPTS -->
     <script src="js/layout.min.js" type="text/javascript"></script>
