@@ -19,6 +19,13 @@
   justify-content: flex-end;
 }
 
+.resultsModule {
+  text-align: center;
+}
+
+.voteResults {
+  text-align: left;
+}
 .bar {
   height: 0%;
   width: 70%;
