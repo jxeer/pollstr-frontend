@@ -3994,3 +3994,24 @@ Processing by PollsController#show as JSON
 Completed 200 OK in 16ms (Views: 13.5ms | ActiveRecord: 0.4ms | Allocations: 8619)
 
 
+Started GET "/" for ::1 at 2023-01-07 05:28:15 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/julianxeer/.frum/versions/3.2.0/lib/ruby/gems/3.2.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/julianxeer/.frum/versions/3.2.0/lib/ruby/gems/3.2.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.3ms | Allocations: 460)
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 3180)
+
+
+Started GET "/polls/1.json" for ::1 at 2023-01-07 05:28:22 -0500
+Processing by PollsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPoll Load (0.7ms)[0m  [1m[34mSELECT "polls".* FROM "polls" WHERE "polls"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/polls_controller.rb:65:in `set_poll'
+  Rendering polls/show.json.jbuilder
+  Rendered polls/_poll.json.jbuilder (Duration: 0.9ms | Allocations: 394)
+  [1m[36mVote Load (0.5ms)[0m  [1m[34mSELECT "votes".* FROM "votes"[0m
+  ↳ app/views/polls/show.json.jbuilder:3
+  Rendered polls/show.json.jbuilder (Duration: 7.4ms | Allocations: 11367)
+Completed 200 OK in 23ms (Views: 7.9ms | ActiveRecord: 1.6ms | Allocations: 19616)
+
+
